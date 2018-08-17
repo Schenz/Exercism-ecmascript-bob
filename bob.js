@@ -1,12 +1,12 @@
 class Bob {
   hey(message) {
-    if (message.Trim() === '') {
+    if (message.trim() === '') {
       return "Fine. Be that way!";
-    } else if (isUpperCase(message.Trim()) && isQuestion(message.Trim())) {
+    } else if (isUpperCase(message.trim()) && isQuestion(message.trim())) {
       return "Calm down, I know what I'm doing!";
-    } else if (sUpperCase(message.Trim())) {
+    } else if (isUpperCase(message.trim())) {
       return "Whoa, chill out!";
-    } else if (isQuestion(message.Trim())) {
+    } else if (isQuestion(message.trim())) {
       return "Sure.";
     } else {
       return "Whatever.";
@@ -15,27 +15,12 @@ class Bob {
 }
 
 function isUpperCase(input) {
-  var noAlpha = true;
-
-  for (let i = 0; i < input.Length; i++) {
-    if (!isNumeric(input[i]) && input[i].toUpperCase !== input[i]) {
-      return false;
-    }
-
-    if (!isNumeric(input[i])) {
-      noAlpha = false;
-    }
-  }
-
-  return !noAlpha;
-}
-
-function isNumeric(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
+  let test = input.replace(/[^a-zA-Z]/g, '');
+  return test.toUpperCase() === test && test.length;
 }
 
 function isQuestion(input) {
-  return input.Trim() !== '' && input.Substring(input.Length - 1) === "?";
+  return input.trim() !== '' && input.substring(input.length - 1) === "?";
 }
 
 export default Bob;
