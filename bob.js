@@ -1,16 +1,27 @@
 class Bob {
   hey(message) {
-    if (message.trim() === '') {
+    let trimmedMesage, upperCaseMessage, questionMessage;
+    trimmedMesage = message.trim();
+    upperCaseMessage = isUpperCase(trimmedMesage);
+    questionMessage = isQuestion(trimmedMesage);
+
+    if (trimmedMesage === '') {
       return "Fine. Be that way!";
-    } else if (isUpperCase(message.trim()) && isQuestion(message.trim())) {
-      return "Calm down, I know what I'm doing!";
-    } else if (isUpperCase(message.trim())) {
-      return "Whoa, chill out!";
-    } else if (isQuestion(message.trim())) {
-      return "Sure.";
-    } else {
-      return "Whatever.";
     }
+
+    if (upperCaseMessage && questionMessage) {
+      return "Calm down, I know what I'm doing!";
+    }
+
+    if (upperCaseMessage) {
+      return "Whoa, chill out!";
+    }
+
+    if (questionMessage) {
+      return "Sure.";
+    }
+
+    return "Whatever.";
   }
 }
 
